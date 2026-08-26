@@ -18,17 +18,24 @@ export default function AppleIcon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #070B19 0%, #0B132B 50%, #050814 100%)',
+          background: '#050816',
           borderRadius: '40px',
           border: '6px solid #00F5FF',
-          color: '#00F5FF',
-          fontSize: '100px',
-          fontWeight: 900,
-          fontFamily: 'sans-serif',
-          boxShadow: '0 0 40px rgba(0, 245, 255, 0.6)',
+          padding: '20px',
         }}
       >
-        T
+        <svg
+          width="130"
+          height="130"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#00F5FF"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+        </svg>
       </div>
     ),
     {

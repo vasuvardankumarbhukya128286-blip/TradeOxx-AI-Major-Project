@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useWorkspaceStore } from "@/store/useWorkspaceStore";
 import { 
+  Activity,
   LayoutDashboard, 
   LineChart, 
   PieChart, 
@@ -52,12 +53,14 @@ export function Sidebar() {
     >
       <div className="h-16 flex items-center justify-between px-4 border-b border-white/5 shrink-0">
         <Link href="/dashboard" className={cn("flex items-center gap-2 overflow-hidden", !sidebarExpanded && "justify-center w-full")}>
-          <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
-            <img src="/favicon.svg" alt="TradeOxx Ai" className="w-full h-full object-contain" />
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-blue via-brand-purple to-brand-cyan p-[1px] shrink-0">
+            <div className="w-full h-full bg-brand-bgPrimary rounded-xl flex items-center justify-center">
+              <Activity className="text-white w-4 h-4" />
+            </div>
           </div>
           {sidebarExpanded && (
             <span className="font-heading font-black text-lg tracking-tight whitespace-nowrap text-white">
-              TradeOxx <span className="text-brand-cyan">Ai</span>
+              TradeOxx <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">Ai</span>
             </span>
           )}
         </Link>

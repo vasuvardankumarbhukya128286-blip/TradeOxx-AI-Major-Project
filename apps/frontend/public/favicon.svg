@@ -1,59 +1,74 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
+    <!-- Background Gradient -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#070B19"/>
-      <stop offset="50%" stop-color="#0B132B"/>
-      <stop offset="100%" stop-color="#050814"/>
+      <stop offset="0%" stop-color="#050816"/>
+      <stop offset="50%" stop-color="#080E24"/>
+      <stop offset="100%" stop-color="#02040A"/>
     </linearGradient>
+
+    <!-- Border Gradient: Blue -> Purple -> Cyan -->
     <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00F5FF" stop-opacity="0.8"/>
-      <stop offset="50%" stop-color="#6366F1" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#A855F7" stop-opacity="0.8"/>
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="50%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#00F5FF"/>
     </linearGradient>
-    <linearGradient id="cyanBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+
+    <!-- Pulse Wave Stroke Gradient -->
+    <linearGradient id="pulseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#00F5FF"/>
       <stop offset="50%" stop-color="#3B82F6"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
     </linearGradient>
-    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#00F5FF" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.3"/>
-    </linearGradient>
-    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="16" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+
+    <!-- Glow Filter for Pulse Line -->
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur1" />
+      <feGaussianBlur stdDeviation="24" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
     </filter>
-    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="24" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-    </filter>
+
+    <!-- Ambient Center Glow -->
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00F5FF" stop-opacity="0.2"/>
+      <stop offset="60%" stop-color="#7C3AED" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#050816" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
-  <!-- Base Rounded Container with Glowing Border -->
-  <rect x="24" y="24" width="464" height="464" rx="112" fill="url(#bgGrad)"/>
-  <rect x="24" y="24" width="464" height="464" rx="112" fill="none" stroke="url(#borderGrad)" stroke-width="8"/>
+  <!-- Background Base Container -->
+  <rect x="24" y="24" width="464" height="464" rx="120" fill="url(#bgGrad)"/>
+  
+  <!-- Glowing Border -->
+  <rect x="24" y="24" width="464" height="464" rx="120" fill="none" stroke="url(#borderGrad)" stroke-width="12"/>
 
-  <!-- Ambient Glow Behind Icon -->
-  <circle cx="256" cy="256" r="140" fill="#00F5FF" opacity="0.12" filter="url(#softGlow)"/>
-  <circle cx="256" cy="220" r="100" fill="#8B5CF6" opacity="0.15" filter="url(#softGlow)"/>
+  <!-- Center Ambient Glow -->
+  <circle cx="256" cy="256" r="160" fill="url(#centerGlow)"/>
 
-  <!-- Modern Futuristic T and Trading Wave Geometry -->
+  <!-- Signature Activity / Pulse Wave Icon -->
+  <!-- Scaled from M22 12h-4l-3 9L9 3l-3 9H2 centered in 512x512 -->
   <g filter="url(#neonGlow)">
-    <!-- Top Horizontal Crossbar of T (Sleek angled high-tech wings) -->
-    <path d="M 120 160 L 392 160 C 404 160 412 170 408 182 L 394 216 C 390 224 382 230 372 230 L 298 230 L 298 376 C 298 392 284 406 268 406 L 244 406 C 228 406 214 392 214 376 L 214 230 L 140 230 C 130 230 122 224 118 216 L 104 182 C 100 170 108 160 120 160 Z" 
-          fill="url(#cyanBlueGrad)" />
-
-    <!-- Upward Growth Candlestick / AI Pulse Accents -->
-    <!-- Left Candlestick Accent -->
-    <rect x="148" y="260" width="16" height="56" rx="8" fill="#00F5FF" opacity="0.85"/>
-    <line x1="156" y1="244" x2="156" y2="332" stroke="#00F5FF" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
-
-    <!-- Right Rising Pulse Indicator -->
-    <rect x="348" y="240" width="16" height="76" rx="8" fill="#00F5FF" opacity="0.95"/>
-    <line x1="356" y1="220" x2="356" y2="332" stroke="#00F5FF" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
-
-    <!-- AI Nexus Dot (Glowing energy spark) -->
-    <circle cx="396" cy="144" r="12" fill="#00F5FF" filter="url(#softGlow)"/>
-    <circle cx="396" cy="144" r="7" fill="#FFFFFF"/>
+    <path 
+      d="M 64 256 L 140 256 L 198 420 L 314 92 L 372 256 L 448 256" 
+      fill="none" 
+      stroke="url(#pulseGrad)" 
+      stroke-width="36" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+    />
+    <!-- Core White Centerline for Neon Pop -->
+    <path 
+      d="M 64 256 L 140 256 L 198 420 L 314 92 L 372 256 L 448 256" 
+      fill="none" 
+      stroke="#FFFFFF" 
+      stroke-width="14" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+      stroke-opacity="0.9"
+    />
   </g>
 </svg>
