@@ -21,7 +21,7 @@ export function HeroSection() {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8"
         >
           <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
-          <span className="text-sm font-medium text-brand-textSecondary">TradeOXX AI Version 1.0 is live</span>
+          <span className="text-sm font-medium text-brand-textSecondary">TradeOxx Ai Version 1.0 is live</span>
         </motion.div>
 
         {/* Headline */}

@@ -52,12 +52,12 @@ export function Sidebar() {
     >
       <div className="h-16 flex items-center justify-between px-4 border-b border-white/5 shrink-0">
         <Link href="/dashboard" className={cn("flex items-center gap-2 overflow-hidden", !sidebarExpanded && "justify-center w-full")}>
-          <div className="w-8 h-8 rounded-lg bg-brand-cyan shrink-0 flex items-center justify-center font-bold text-brand-bgPrimary">
-            T
+          <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
+            <img src="/favicon.svg" alt="TradeOxx Ai" className="w-full h-full object-contain" />
           </div>
           {sidebarExpanded && (
             <span className="font-heading font-black text-lg tracking-tight whitespace-nowrap text-white">
-              TradeOXX <span className="text-brand-cyan">AI</span>
+              TradeOxx <span className="text-brand-cyan">Ai</span>
             </span>
           )}
         </Link>

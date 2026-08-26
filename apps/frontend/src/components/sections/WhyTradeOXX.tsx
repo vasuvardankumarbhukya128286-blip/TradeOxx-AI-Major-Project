@@ -19,7 +19,7 @@ export function WhyTradeOXX() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-purple">driven by education.</span>
             </h2>
             <p className="text-brand-textMuted text-lg mb-8 leading-relaxed">
-              We believe AI should empower you, not replace you. TradeOXX AI is designed to explain the 'why' behind market movements, helping you build your own financial intuition safely and securely.
+              We believe AI should empower you, not replace you. TradeOxx Ai is designed to explain the 'why' behind market movements, helping you build your own financial intuition safely and securely.
             </p>
             
             <div className="space-y-6">

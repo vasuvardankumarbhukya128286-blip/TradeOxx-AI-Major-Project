@@ -22,7 +22,7 @@ export function Footer() {
                 </div>
               </div>
               <span className="text-lg font-heading font-bold text-white tracking-tight">
-                TradeOXX <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">AI</span>
+                TradeOxx <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">Ai</span>
               </span>
             </Link>
             <p className="text-brand-textMuted text-sm leading-relaxed mb-6 max-w-sm">
@@ -70,7 +70,7 @@ export function Footer() {
                 className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-purple flex-1 transition-colors"
               />
               <button 
-                type="submit"
+                type="submit" 
                 className="bg-brand-blue hover:bg-brand-purple text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-colors"
               >
                 Subscribe
@@ -81,7 +81,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-brand-textMuted text-sm">
-            © {currentYear} TradeOXX AI. All rights reserved.
+            © {currentYear} TradeOxx Ai. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-brand-textMuted">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
@@ -91,8 +91,8 @@ export function Footer() {
         </div>
         
         <div className="mt-8 text-center text-xs text-brand-textMuted/50 max-w-4xl mx-auto">
-          TradeOXX AI provides educational tools and portfolio analysis. We do not provide financial, investment, tax, or legal advice. AI-generated insights are for informational purposes only and should not be considered as guaranteed outcomes or trading recommendations.
-        </div>
+          TradeOxx Ai provides educational tools and portfolio analysis. We do not provide financial, investment, tax, or legal advice. AI-generated insights are for informational purposes only and should not be considered as guaranteed outcomes or trading recommendations.
+        </div>>
       </div>
     </footer>
   );

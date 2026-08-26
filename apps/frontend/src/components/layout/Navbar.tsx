@@ -41,7 +41,7 @@ export function Navbar() {
             </div>
           </div>
           <span className="text-xl font-heading font-bold text-white tracking-tight">
-            TradeOXX <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">AI</span>
+            TradeOxx <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">Ai</span>
           </span>
         </Link>
 
