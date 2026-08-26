@@ -7,13 +7,15 @@ export const metadata: Metadata = {
   description: "Turn complex market data into understandable insights. TradeOxx Ai is a premium, AI-powered portfolio intelligence platform.",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.ico?v=4", sizes: "any" },
+      { url: "/favicon.svg?v=4", type: "image/svg+xml" },
+      { url: "/favicon.png?v=4", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
-    apple: "/favicon.png",
+    shortcut: "/favicon.ico?v=4",
+    apple: "/favicon.png?v=4",
   },
+  themeColor: "#050816",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
   openGraph: {
     title: "TradeOxx Ai",
     description: "AI-Powered Portfolio Intelligence Engine",
@@ -29,9 +31,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
+        <meta name="theme-color" content="#050816" />
+        <link rel="shortcut icon" href="/favicon.ico?v=4" />
+        <link rel="icon" href="/favicon.ico?v=4" sizes="any" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=4" />
+        <link rel="apple-touch-icon" href="/favicon.png?v=4" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
