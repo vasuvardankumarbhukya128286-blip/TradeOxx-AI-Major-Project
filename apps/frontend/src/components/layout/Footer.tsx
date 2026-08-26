@@ -92,7 +92,7 @@ export function Footer() {
         
         <div className="mt-8 text-center text-xs text-brand-textMuted/50 max-w-4xl mx-auto">
           TradeOxx Ai provides educational tools and portfolio analysis. We do not provide financial, investment, tax, or legal advice. AI-generated insights are for informational purposes only and should not be considered as guaranteed outcomes or trading recommendations.
-        </div>>
+        </div>
       </div>
     </footer>
   );
