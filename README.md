@@ -8,6 +8,8 @@
 
 ## 📌 About TradeOxx Ai
 
+🔗 **Live Website**: [https://tradeoxx-ai.vercel.app](https://tradeoxx-ai.vercel.app)
+
 **TradeOxx Ai** is a next-generation portfolio intelligence and market analytics platform designed to make complex financial data intuitive, transparent, and actionable. 
 
 Built for modern investors, traders, and learners, TradeOxx Ai combines real-time market data visualization with intelligent analysis to help users monitor performance, evaluate risks, and understand the driving forces behind price movements.

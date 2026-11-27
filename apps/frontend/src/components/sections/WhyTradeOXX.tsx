@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, BookOpen, Fingerprint } from "lucide-react";
+import { ShieldCheck, BookOpen, Fingerprint, ExternalLink } from "lucide-react";
 
 export function WhyTradeOXX() {
   return (
-    <section className="py-24 relative overflow-hidden bg-brand-bgPrimary border-t border-white/5">
+    <section id="about" className="py-24 relative overflow-hidden bg-brand-bgPrimary border-t border-white/5 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -38,6 +38,19 @@ export function WhyTradeOXX() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-4">
+              <a 
+                href="https://tradeoxx-ai.vercel.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-blue via-brand-purple to-brand-cyan text-white hover:opacity-95 transition-all font-bold text-sm shadow-lg shadow-brand-blue/20 group"
+              >
+                <span>Visit Live Platform</span>
+                <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+              <span className="text-xs text-brand-textMuted">tradeoxx-ai.vercel.app</span>
             </div>
           </motion.div>
 
