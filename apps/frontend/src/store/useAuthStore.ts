@@ -1,16 +1,17 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-interface User {
+export interface User {
   id: string;
   email: string;
+  username?: string;
   profile?: {
     displayName: string;
     avatarUrl: string | null;
   };
 }
 
-interface AuthState {
+export interface AuthState {
   user: User | null;
   token: string | null;
   isAuthenticated: boolean;
@@ -23,16 +24,9 @@ interface AuthState {
 export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
-      user: {
-        id: 'mock-user-123',
-        email: 'user@tradeoxx.ai',
-        profile: {
-          displayName: 'TradeOXX User',
-          avatarUrl: null
-        }
-      },
-      token: 'mock-token',
-      isAuthenticated: true,
+      user: null,
+      token: null,
+      isAuthenticated: false,
       isLoading: false,
 
       login: (user, token) => set({ user, token, isAuthenticated: true }),

@@ -1,6 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ConditionalLayout } from "@/components/layout/ConditionalLayout";
+
+export const viewport: Viewport = {
+  themeColor: "#050816",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "TradeOxx Ai - The Intelligent Portfolio Engine",
@@ -14,8 +21,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico?v=4",
     apple: "/favicon.png?v=4",
   },
-  themeColor: "#050816",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
   openGraph: {
     title: "TradeOxx Ai",
     description: "AI-Powered Portfolio Intelligence Engine",

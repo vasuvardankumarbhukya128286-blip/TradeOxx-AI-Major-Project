@@ -1,14 +1,23 @@
 "use client";
 
-import { Bell, Search, Menu, Command } from "lucide-react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Bell, Search, Menu, Command, LogOut, User as UserIcon, CheckCircle2 } from "lucide-react";
 import { useWorkspaceStore } from "@/store/useWorkspaceStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import { cn } from "@/components/ui/utils";
 import { NotificationCenter } from "@/components/notifications/NotificationCenter";
 
 export function TopNav() {
+  const router = useRouter();
   const { setCommandPaletteOpen, sidebarExpanded, toggleSidebar } = useWorkspaceStore();
-  const { user } = useAuthStore();
+  const { user, logout } = useAuthStore();
+  const [profileOpen, setProfileOpen] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    router.push("/login");
+  };
 
   return (
     <header 
@@ -47,12 +56,46 @@ export function TopNav() {
         {/* Notifications */}
         <NotificationCenter />
 
-        {/* User Profile */}
-        <button className="flex items-center gap-2 pl-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-purple to-brand-blue flex items-center justify-center text-xs font-bold text-white border border-white/10">
-            {user?.profile?.displayName?.[0]?.toUpperCase() || "U"}
-          </div>
-        </button>
+        {/* User Profile Dropdown */}
+        <div className="relative">
+          <button 
+            onClick={() => setProfileOpen(!profileOpen)}
+            className="flex items-center gap-2.5 pl-2 py-1 pr-2 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/10"
+          >
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-purple to-brand-blue flex items-center justify-center text-xs font-bold text-white border border-white/10 shadow-sm">
+              {(user?.username?.[0] || user?.profile?.displayName?.[0] || user?.email?.[0] || "U").toUpperCase()}
+            </div>
+            <div className="hidden md:flex flex-col text-left">
+              <span className="text-xs font-semibold text-white leading-tight">
+                {user?.username || user?.profile?.displayName || "Trader"}
+              </span>
+              <span className="text-[10px] text-brand-textMuted leading-tight truncate max-w-[120px]">
+                {user?.email || "Account"}
+              </span>
+            </div>
+          </button>
+
+          {profileOpen && (
+            <div 
+              className="absolute right-0 mt-2 w-64 rounded-2xl bg-[#070C1E] border border-white/10 shadow-2xl p-3 z-50 animate-in fade-in zoom-in-95 duration-150 backdrop-blur-xl"
+              onMouseLeave={() => setProfileOpen(false)}
+            >
+              <div className="px-3 py-2 border-b border-white/5 mb-2">
+                <p className="text-xs font-medium text-brand-textMuted">Signed in as</p>
+                <p className="text-sm font-bold text-white truncate">{user?.username || "Trader"}</p>
+                <p className="text-xs text-brand-textSecondary truncate">{user?.email || "No email provided"}</p>
+              </div>
+
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-xl transition-colors font-medium text-left"
+              >
+                <LogOut size={16} />
+                <span>Log Out</span>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

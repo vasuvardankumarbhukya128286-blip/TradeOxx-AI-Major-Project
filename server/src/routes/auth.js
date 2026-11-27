@@ -59,10 +59,10 @@ router.post('/register', async (req, res) => {
  */
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ error: 'email and password are required' });
+      return res.status(400).json({ error: 'Mail ID and password are required' });
     }
 
     let user = store.getUserByEmail(email);
@@ -70,7 +70,13 @@ router.post('/login', async (req, res) => {
       // Vercel stateless fallback: auto-create the missing user in memory
       const id = generateId();
       const hashed = await bcrypt.hash(password, 10);
-      user = store.create('users', { id, name: email.split('@')[0], email, password: hashed });
+      user = store.create('users', { 
+        id, 
+        name: username || email.split('@')[0], 
+        username: username || email.split('@')[0],
+        email, 
+        password: hashed 
+      });
 
       // Create default portfolio
       store.create('portfolios', {
@@ -88,11 +94,14 @@ router.post('/login', async (req, res) => {
       });
     } else {
       const match = await bcrypt.compare(password, user.password);
-      if (!match) return res.status(401).json({ error: 'Invalid email or password' });
+      if (!match) return res.status(401).json({ error: 'Invalid mail ID or password' });
     }
 
     const token = generateToken(user.id);
     const { password: _, ...safeUser } = user;
+    if (username && !safeUser.username) {
+      safeUser.username = username;
+    }
 
     return res.json({ user: safeUser, token });
   } catch (err) {

@@ -3,13 +3,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Activity, Menu, X, ChevronRight } from "lucide-react";
+import { Activity, Menu, X, ChevronRight, LayoutDashboard } from "lucide-react";
+import { useAuthStore } from "@/store/useAuthStore";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { isAuthenticated, user } = useAuthStore();
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -60,21 +64,33 @@ export function Navbar() {
 
         {/* Auth Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <Link
-            href="/dashboard"
-            className="text-sm font-medium text-white hover:text-brand-cyan transition-colors"
-          >
-            Log in
-          </Link>
-          <Link
-            href="/dashboard"
-            className="group relative px-6 py-2.5 rounded-full bg-white text-brand-bgPrimary text-sm font-bold overflow-hidden transition-all hover:scale-105 active:scale-95"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <span className="relative z-10 group-hover:text-white transition-colors flex items-center gap-1">
-              Get Started <ChevronRight className="w-4 h-4" />
-            </span>
-          </Link>
+          {mounted && isAuthenticated ? (
+            <Link
+              href="/dashboard"
+              className="group relative px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-purple text-white text-sm font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-lg shadow-brand-blue/20"
+            >
+              <LayoutDashboard size={16} />
+              <span>Dashboard ({user?.username || user?.profile?.displayName || "Account"})</span>
+            </Link>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="text-sm font-medium text-white hover:text-brand-cyan transition-colors"
+              >
+                Log in
+              </Link>
+              <Link
+                href="/login"
+                className="group relative px-6 py-2.5 rounded-full bg-white text-brand-bgPrimary text-sm font-bold overflow-hidden transition-all hover:scale-105 active:scale-95"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10 group-hover:text-white transition-colors flex items-center gap-1">
+                  Get Started <ChevronRight className="w-4 h-4" />
+                </span>
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -106,18 +122,33 @@ export function Navbar() {
               </Link>
             ))}
             <div className="flex flex-col gap-4 mt-4">
-              <Link
-                href="/dashboard"
-                className="text-center py-3 rounded-xl border border-white/10 text-white font-medium"
-              >
-                Log in
-              </Link>
-              <Link
-                href="/dashboard"
-                className="text-center py-3 rounded-xl bg-gradient-to-r from-brand-blue to-brand-purple text-white font-bold"
-              >
-                Get Started
-              </Link>
+              {mounted && isAuthenticated ? (
+                <Link
+                  href="/dashboard"
+                  className="text-center py-3 rounded-xl bg-gradient-to-r from-brand-blue to-brand-purple text-white font-bold flex items-center justify-center gap-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <LayoutDashboard size={18} />
+                  <span>Go to Dashboard</span>
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="text-center py-3 rounded-xl border border-white/10 text-white font-medium hover:border-brand-cyan/50 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Log in
+                  </Link>
+                  <Link
+                    href="/login"
+                    className="text-center py-3 rounded-xl bg-gradient-to-r from-brand-blue to-brand-purple text-white font-bold"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
             </div>
           </motion.div>
         )}

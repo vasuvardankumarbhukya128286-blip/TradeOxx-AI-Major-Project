@@ -15,9 +15,13 @@ export class AuthService {
     private mail: MailService,
   ) {}
 
-  async validateUser(email: string, pass: string): Promise<any> {
+  async validateUser(email: string, pass: string, username?: string): Promise<any> {
     const user = await this.usersService.findByEmail(email);
     if (user && (await bcrypt.compare(pass, user.passwordHash))) {
+      // If username provided and user already has a username, verify match
+      if (username && user.username && user.username.toLowerCase() !== username.toLowerCase()) {
+        return null;
+      }
       const { passwordHash, ...result } = user;
       return result;
     }
